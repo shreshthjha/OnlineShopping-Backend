@@ -59,4 +59,10 @@ public class UserController {
         userService.changePassword(id, newPassword);
         return ResponseEntity.ok("Password updated successfully");
     }
+    
+    //feign ke lie
+    @PutMapping("/block-user/{id}")
+    public ResponseEntity<String> blockUser(@PathVariable Long id){
+        return ResponseEntity.ok("User blocked successfully");
+    }
 }
