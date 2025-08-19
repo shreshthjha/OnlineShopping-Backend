@@ -43,15 +43,15 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<String> register(@RequestBody User user) {
+    public ResponseEntity<User> register(@RequestBody User user) {
         User saved = userService.registerUser(user);
-        return ResponseEntity.ok("User registered successfully with id: " + saved.getId());
+        return ResponseEntity.ok(saved);   // ✅ return user object
     }
 
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody User loginRequest) {
+    public ResponseEntity<User> login(@RequestBody User loginRequest) {
         User user = userService.login(loginRequest.getEmail(), loginRequest.getPassword());
-        return ResponseEntity.ok("Login successful. Welcome " + user.getName());
+        return ResponseEntity.ok(user);   // ✅ return user object instead of string
     }
 
     @PutMapping("/change-password/{id}")
